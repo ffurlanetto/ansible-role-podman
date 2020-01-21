@@ -1,0 +1,9 @@
+---
+
+# Install Docker for Ubuntu based OS
+- include_tasks: ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
+
+# Install Docker for RedHat based OS
+- include_tasks: redhat.yml
+  when: ansible_os_family == 'RedHat'

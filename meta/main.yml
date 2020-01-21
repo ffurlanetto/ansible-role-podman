@@ -1,0 +1,26 @@
+---
+
+galaxy_info:
+  author: Florian Furlanetto
+  description: This role install Podman on target system
+  company: ADNEOM
+
+  license: See license.md
+
+  min_ansible_version: 2.x
+
+  platforms:
+  - name: CentOS / RHEL
+    versions:
+    - 8
+  - name: Ubuntu
+    versions:
+    - bionic
+
+  galaxy_tags:
+    - adneom
+    - ffurlanetto
+    - podman
+    - container
+
+dependencies: ['ansible-role-epel']

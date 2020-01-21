@@ -1,0 +1,6 @@
+---
+
+- name: install the 'Container Tools' package group
+  dnf:
+    name: '@container-tools'
+    state: present
