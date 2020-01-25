@@ -7,9 +7,11 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 ).get_hosts('all')
 
 
-def test_hosts_file(host):
-    f = host.file('/etc/hosts')
+def check_podman_installed(host):
+    podman = host.package('podman')
+    assert podman.is_installed
 
-    assert f.exists
-    assert f.user == 'root'
-    assert f.group == 'root'
+
+def check_podman_available(host):
+    command = host.run('podman info')
+    assert command.succeeded

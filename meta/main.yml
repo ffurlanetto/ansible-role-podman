@@ -23,4 +23,4 @@ galaxy_info:
     - podman
     - container
 
-dependencies: ['ansible-role-epel']
+dependencies: []
