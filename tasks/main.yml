@@ -1,9 +1,17 @@
 ---
 
-# Install Docker for Ubuntu based OS
-- include_tasks: ubuntu.yml
-  when: ansible_distribution == 'Ubuntu'
+- name: Validating if supported platform
+  fail: 
+    msg: EPEL is only supported on RedHat compatible OS
+  when: ansible_os_family != 'RedHat'
 
-# Install Docker for RedHat based OS
-- include_tasks: redhat.yml
-  when: ansible_os_family == 'RedHat'
+# Disabled this approach because of Bug : https://github.com/ansible/ansible/issues/56504
+#- name: install the 'Container Tools' package group
+#  dnf:
+#    name: '@container-tools'
+#    state: present
+
+- name: install the 'Container Tools' package group
+  command: dnf install -y @container-tools
+  args:
+    warn: false
